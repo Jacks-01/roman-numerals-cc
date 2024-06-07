@@ -46,11 +46,31 @@ const testInputArray: Array<string> = [
 const calculateRomanNumerals = (inputString: string): any => {
 	console.log('inputString String: ', inputString);
 
-	for (let i = 0; i < inputString.length; i++) {
-		console.log('numeral:', inputString.charAt(i));
-	}
+	let total: number = 0;
 
-	return;
+	for (let i = 0; i < inputString.length - 1; i++) {
+		let currentNumeral = RomanNumeralMap.get(inputString.charAt(i));
+		let nextNumeral = RomanNumeralMap.get(inputString.charAt(i + 1));
+
+		console.log(`current: ${currentNumeral} (${inputString.charAt(i)})`);
+		console.log(`next: ${nextNumeral} (${inputString.charAt(i + 1)})`);
+
+        //! Handle invalid numerals
+		if (currentNumeral === undefined || nextNumeral === undefined) {
+			console.log('Invalid Roman numeral');
+			return;
+        }
+        if (currentNumeral == nextNumeral) {
+            total += (currentNumeral + nextNumeral);
+            console.log('equal, add')
+        }
+		else if (currentNumeral < nextNumeral) {
+            total += ((currentNumeral * -1) + nextNumeral);
+            console.log('smaller, subtract')
+		} 
+	}
+    console.log(total)
+	return total;
 };
 
 calculateRomanNumerals('XXXIX');
