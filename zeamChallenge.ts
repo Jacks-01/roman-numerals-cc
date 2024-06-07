@@ -43,7 +43,7 @@ const testInputArray: Array<string> = [
 	'MMCDXXI', // 2421
 ];
 
-const calculateRomanNumerals = (inputString: string): any => {
+const calculateRomanNumerals = (inputString: string): number | string => {
 	console.log('inputString String: ', inputString);
 
 	let total: number = 0;
@@ -56,7 +56,7 @@ const calculateRomanNumerals = (inputString: string): any => {
 		// console.log(`next: ${nextNumeral} (${inputString.charAt(i + 1)})`);
 
 		//if input isn't a numeral
-        if (currentNumeral === undefined) { return }
+        if (currentNumeral === undefined) { return 'Not a valid roman numeral' }
         //the current numeral the same or bigger than the next
         if (nextNumeral === undefined || currentNumeral >= nextNumeral) { total += currentNumeral }
         // the current numeral is smaller than the next 
