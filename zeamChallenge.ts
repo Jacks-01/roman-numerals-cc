@@ -48,29 +48,24 @@ const calculateRomanNumerals = (inputString: string): any => {
 
 	let total: number = 0;
 
-	for (let i = 0; i < inputString.length - 1; i++) {
+	for (let i = 0; i < inputString.length; i++) {
 		let currentNumeral = RomanNumeralMap.get(inputString.charAt(i));
 		let nextNumeral = RomanNumeralMap.get(inputString.charAt(i + 1));
 
-		console.log(`current: ${currentNumeral} (${inputString.charAt(i)})`);
-		console.log(`next: ${nextNumeral} (${inputString.charAt(i + 1)})`);
+		// console.log(`current: ${currentNumeral} (${inputString.charAt(i)})`);
+		// console.log(`next: ${nextNumeral} (${inputString.charAt(i + 1)})`);
 
-        //! Handle invalid numerals
-		if (currentNumeral === undefined || nextNumeral === undefined) {
-			console.log('Invalid Roman numeral');
-			return;
-        }
-        if (currentNumeral == nextNumeral) {
-            total += (currentNumeral + nextNumeral);
-            console.log('equal, add')
-        }
-		else if (currentNumeral < nextNumeral) {
-            total += ((currentNumeral * -1) + nextNumeral);
-            console.log('smaller, subtract')
-		} 
+		//if input isn't a numeral
+        if (currentNumeral === undefined) { return }
+        //the current numeral the same or bigger than the next
+        if (nextNumeral === undefined || currentNumeral >= nextNumeral) { total += currentNumeral }
+        // the current numeral is smaller than the next 
+        else { total -= currentNumeral }
 	}
-    console.log(total)
+	console.log(total);
 	return total;
 };
 
-calculateRomanNumerals('XXXIX');
+testInputArray.forEach((string) => {
+	calculateRomanNumerals(string);
+});
