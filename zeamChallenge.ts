@@ -30,7 +30,7 @@ RomanNumeralMap.set('M', 1000);
 
 //TODO: 1 - Create the Map with each Roman numeral value.
 //TODO: 2 - Iterate through the input string.
-//TODO: 3 -  Look up each value in the input string and return the total.
+//TODO: 3 - Look up each value in the input string and return the total.
 //TODO: 4 - Check to see if the current pointer is less than the next one.
 //TODO:    4.1 - If yes, then multiply the current pointer by -1.
 //TODO: 5 - Add both values, then update the total.
@@ -55,9 +55,9 @@ const calculateRomanNumerals = (inputString: string): number | string => {
 		// console.log(`current: ${currentNumeral} (${inputString.charAt(i)})`);
 		// console.log(`next: ${nextNumeral} (${inputString.charAt(i + 1)})`);
 
-		//if input isn't a numeral
+		// if input isn't a numeral
         if (currentNumeral === undefined) { return 'Not a valid roman numeral' }
-        //the current numeral the same or bigger than the next
+        // the current numeral the same or bigger than the next
         if (nextNumeral === undefined || currentNumeral >= nextNumeral) { total += currentNumeral }
         // the current numeral is smaller than the next 
         else { total -= currentNumeral }
